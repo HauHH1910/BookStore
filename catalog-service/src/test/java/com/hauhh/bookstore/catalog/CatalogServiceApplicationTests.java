@@ -12,5 +12,5 @@ class CatalogServiceApplicationTests {
     void contextLoads() {}
 
     @Test
-    void setup(){}
+    void setup() {}
 }

@@ -1,5 +1,3 @@
 package com.hauhh.bookstore.catalog;
 
-class TestcontainersConfiguration {
-
-}
+class TestcontainersConfiguration {}

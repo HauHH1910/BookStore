@@ -1,14 +1,13 @@
 package com.hauhh.bookstore.catalog.domain;
 
 import com.hauhh.bookstore.catalog.ApplicationProperties;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,8 +24,7 @@ public class ProductService {
 
         Pageable pageable = PageRequest.of(pageNo, properties.pageSize(), sort);
 
-        var productsPage = productRepository.findAll(pageable)
-                .map(ProductMapper::toProduct);
+        var productsPage = productRepository.findAll(pageable).map(ProductMapper::toProduct);
 
         return PagedResult.<Product>builder()
                 .data(productsPage.getContent())
@@ -40,7 +38,7 @@ public class ProductService {
                 .build();
     }
 
-    public Optional<Product> getProductByCode(String code){
+    public Optional<Product> getProductByCode(String code) {
         return productRepository.findByCode(code).map(ProductMapper::toProduct);
     }
 }

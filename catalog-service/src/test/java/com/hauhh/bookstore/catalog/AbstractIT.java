@@ -1,6 +1,5 @@
 package com.hauhh.bookstore.catalog;
 
-
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ public abstract class AbstractIT {
     private int port;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         RestAssured.port = port;
     }
 }

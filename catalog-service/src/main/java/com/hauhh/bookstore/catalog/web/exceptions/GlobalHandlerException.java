@@ -1,15 +1,13 @@
 package com.hauhh.bookstore.catalog.web.exceptions;
 
+import com.hauhh.bookstore.catalog.domain.ProductNotFoundException;
 import java.net.URI;
 import java.time.Instant;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import com.hauhh.bookstore.catalog.domain.ProductNotFoundException;
 
 @RestControllerAdvice
 public class GlobalHandlerException extends ResponseEntityExceptionHandler {
@@ -20,8 +18,8 @@ public class GlobalHandlerException extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     ProblemDetail handleUnhandleException(Exception e) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
-                HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         problemDetail.setTitle(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
         problemDetail.setType(ISE_FOUND_TYPE);
         problemDetail.setProperty("service", SERVICE_NAME);
@@ -40,5 +38,4 @@ public class GlobalHandlerException extends ResponseEntityExceptionHandler {
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;
     }
-
 }

@@ -8,9 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
@@ -20,8 +17,7 @@ public class ProductController {
 
     @GetMapping
     public PagedResult<Product> getProducts(
-            @RequestParam(name = "page", defaultValue = "1") int pageNo
-    ) {
+            @RequestParam(name = "page", defaultValue = "1") int pageNo) {
         return productService.getProducts(pageNo);
     }
 

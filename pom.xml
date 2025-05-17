@@ -19,6 +19,7 @@
 
     <modules>
         <module>catalog-service</module>
+        <module>order-service</module>
     </modules>
 
     <build>
@@ -29,12 +30,12 @@
                 <version>${spotless-maven-plugin.version}</version>
                 <configuration>
                     <java>
-                        <importOrder />
-                        <removeUnusedImports />
+                        <importOrder/>
+                        <removeUnusedImports/>
                         <palantirJavaFormat>
                             <version>2.35.0</version>
                         </palantirJavaFormat>
-                        <formatAnnotations />
+                        <formatAnnotations/>
                     </java>
                 </configuration>
                 <executions>
